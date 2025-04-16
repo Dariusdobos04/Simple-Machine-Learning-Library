@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<AnchorPane prefHeight="700.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Controller">
+    <children>
+        <!-- Title Section -->
+        <Label layoutX="20.0" layoutY="20.0" text="Machine Learning Model Trainer" style="-fx-font-size: 22px; -fx-font-weight: bold;" />
+
+        <!-- File chooser section -->
+        <VBox layoutX="20.0" layoutY="60.0" spacing="10.0">
+            <Label text="Data File" style="-fx-font-weight: bold;" />
+            <HBox spacing="10.0">
+                <Button fx:id="browseButton" text="Browse CSV" onAction="#browseFile" />
+                <TextField fx:id="filePathTextField" prefWidth="500.0" promptText="Selected file path..." />
+                <Button fx:id="loadDataButton" onAction="#loadData" text="Load Data" />
+            </HBox>
+        </VBox>
+
+        <!-- Model selection and hyperparameters -->
+        <VBox layoutX="20.0" layoutY="140.0" spacing="10.0">
+            <Label text="Model Configuration" style="-fx-font-weight: bold;" />
+            <HBox spacing="10.0">
+                <ComboBox fx:id="modelComboBox" prefWidth="250.0" promptText="Select Model..." />
+                <TextField fx:id="parameterTextField" prefWidth="250.0" promptText="Hyperparameter..." />
+            </HBox>
+        </VBox>
+
+        <!-- Train/Validation/Test split percentages -->
+        <VBox layoutX="20.0" layoutY="220.0" spacing="10.0">
+            <Label text="Data Split Percentages" style="-fx-font-weight: bold;" />
+            <HBox spacing="10.0">
+                <Label text="Train (%)" />
+                <TextField fx:id="trainPercentTextField" prefWidth="50.0" text="70" />
+                <Label text="Validation (%)" />
+                <TextField fx:id="validationPercentTextField" prefWidth="50.0" text="15" />
+                <Label text="Test (%)" />
+                <TextField fx:id="testPercentTextField" prefWidth="50.0" text="15" />
+            </HBox>
+        </VBox>
+
+        <!-- Train button -->
+        <VBox layoutX="20.0" layoutY="300.0" spacing="10.0">
+            <Button fx:id="trainButton" text="Train Model" onAction="#trainModel" style="-fx-font-size: 14px; -fx-font-weight: bold;" prefWidth="150.0" />
+        </VBox>
+
+        <!-- Output area for evaluation metrics -->
+        <VBox layoutX="20.0" layoutY="360.0" spacing="10.0">
+            <Label text="Output Metrics" style="-fx-font-weight: bold;" />
+            <TextArea fx:id="outputTextArea" prefHeight="150.0" prefWidth="760.0" wrapText="true" style="-fx-font-family: 'Courier New'; -fx-font-size: 12px;" />
+        </VBox>
+
+        <!-- Confusion Matrix display -->
+        <VBox layoutX="20.0" layoutY="540.0" spacing="10.0">
+            <Label text="Confusion Matrix" style="-fx-font-weight: bold;" />
+            <TableView fx:id="confusionMatrixTable" prefHeight="120.0" prefWidth="760.0">
+                <columns>
+                    <!-- Actual vs Predicted columns to be populated dynamically -->
+                    <TableColumn fx:id="classColumn" text="Class" />
+                </columns>
+            </TableView>
+        </VBox>
+    </children>
+</AnchorPane>
